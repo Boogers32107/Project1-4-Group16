@@ -2,6 +2,8 @@ import discord
 import asyncio
 import aiohttp
 import json
+import html 
+
 
 TOKEN = 'MTMzNDI1OTIzODQ0MDI3NjA5Mg.GohmT3.bgCbmt6JuFo7FHPVayfE39ZYNscyGuVt5XnMdI' #Please don't abuse the token it is for my discord server with just me and a bot.
 
@@ -11,6 +13,7 @@ client = discord.Client(intents=intents)
 
 current_question = None
 current_answer = None
+
 
 async def fetch_trivia(): #Pulls from URL
     url = 'https://opentdb.com/api.php?amount=1&category=15&type=boolean' #This is our Video Games API URL it will pull from a pool questions.
@@ -34,6 +37,7 @@ async def on_message(message):
 
     if message.content.startswith('!trivia'): #This is the command it will watch in chat for.
         questions = await fetch_trivia()
+        print(f"{html.unescape(questions)}")
         if questions:
             for question in questions:
                 current_question = question['question']
@@ -50,6 +54,8 @@ async def on_message(message):
                     await message.channel.send("Not Correct")
                     current_question = None
                     current_answer = None
+   
+    
 #@client.event
 #async def on_message(message):
         #if message.author == client.user:
