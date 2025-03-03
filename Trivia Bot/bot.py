@@ -37,12 +37,11 @@ async def on_message(message):
 
     if message.content.startswith('!trivia'): #This is the command it will watch in chat for.
         questions = await fetch_trivia()
-        print(f"{html.unescape(questions)}")
         if questions:
             for question in questions:
                 current_question = question['question']
                 current_answer = question['correct_answer']
-                await message.channel.send(f"Category: {question['category']}\nQuestion: {question['question']}\nReply with 'True' or 'False' otherwise it will break and give me an error.")
+                await message.channel.send(f"Category: {question['category']}\nQuestion: {html.unescape(question['question'])}\nReply with 'True' or 'False' otherwise it will break and give me an error.")
                 await asyncio.sleep(15) #Delay of 15 seconds so it doesn't get spammed.
         else:
             await message.channel.send("Please don't spam try again in a bit.")
