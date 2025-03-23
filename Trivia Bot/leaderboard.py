@@ -1,9 +1,9 @@
 import json
-from pathlib import Path
+from pathlib import Path #Imports
 
 folder = Path(__file__).resolve().parent
 
-def load_leaderboard():
+def load_leaderboard(): #Tells it to check for file first
     try:
         with open(Path(folder, "data.json"), "r") as file:
             data = json.load(file)
@@ -15,11 +15,11 @@ def load_leaderboard():
 
     return data
 
-def save_leaderboard(data):
+def save_leaderboard(data): #Tells it to save the updated file
     with open(Path(folder, "data.json"), "w") as file:
         json.dump(data, file, indent=4)
 
-def update_score(user, score):
+def update_score(user, score): #Will create User if the User was not found
     data = load_leaderboard()
     found = False
     for entry in data:
@@ -33,7 +33,7 @@ def update_score(user, score):
 
     save_leaderboard(data)
 
-def get_leaderboard():
+def get_leaderboard(): 
     data = load_leaderboard()
     sorted_data = sorted(data, key=lambda x: x["score"], reverse=True)
     return sorted_data
