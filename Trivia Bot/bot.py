@@ -2,9 +2,9 @@ import discord
 import asyncio
 import aiohttp
 import html
-from Leaderboard_1 import update_score, get_leaderboard
+from leaderboard import update_score, get_leaderboard
 
-TOKEN = 'YOUR_DISCORD_BOT_TOKEN'
+TOKEN = 'MTMzNDI1OTIzODQ0MDI3NjA5Mg.GZvNnl.6xrVM4uIUrVx-gDzl7fMyWYcSrJo1TABRa-ihc'
 
 intents = discord.Intents.default()
 intents.message_content = True
