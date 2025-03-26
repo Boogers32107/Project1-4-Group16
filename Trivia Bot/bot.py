@@ -4,7 +4,7 @@ import aiohttp
 import html
 from leaderboard import update_score, get_leaderboard #Pulls from the leaderboard.py file
 
-TOKEN = 'MTMzNDI1OTIzODQ0MDI3NjA5Mg.GZvNnl.6xrVM4uIUrVx-gDzl7fMyWYcSrJo1TABRa-ihc' #Bot Token
+TOKEN = '' # INPUT BOT TOKEN HERE
 
 intents = discord.Intents.default()
 intents.message_content = True
